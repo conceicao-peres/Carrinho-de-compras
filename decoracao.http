@@ -1,0 +1,16 @@
+### ************************************
+# API carrinho_compras / decoracao
+#
+
+###
+# URL
+@url=http://localhost:8000
+
+### -------------------------------------
+# Principal 
+
+###
+# (PING) Verificar aplicação web
+GET {{url}}
+
+### -------------------------------------
