@@ -9,5 +9,4 @@ rota_principal = APIRouter(
 
 @rota_principal.get("/")
 def dizer_ola():
-    # A rota principal somente diz um 'oi'.
-    return "Oi"
+    return "Ok"
