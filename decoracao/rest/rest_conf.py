@@ -9,17 +9,15 @@ def configurar_rotas(app: FastAPI):
     # Publicando as rotas para o FastAPI.
     app.include_router(rota_principal)
     app.include_router(rota_cliente)
+
     app.include_router(rota_produto)
     app.include_router(rota_carrinho)
-
 
 
 def criar_aplicacao_fastapi():
     # Crio a aplicação FastAPI
     app = FastAPI()
 
-    # Configuro a aplicação FastAPI
-    configurar_api_rest(app)
     # ... e configuro suas rotas
     configurar_rotas(app)
 
