@@ -1,0 +1,26 @@
+
+# URL
+@url=http://localhost:8000
+
+### -------------------------------------
+# Principal 
+
+###
+# (PING) Verificar aplicação web
+GET {{url}}
+
+### -------------------------------------
+# cliente 
+
+###
+# URL base para a api de clientes
+@apiCliente={{url}}/api/cliente
+
+###
+# Cadastra/salva um novo cliente
+POST {{apiCliente}}
+
+{
+    "nome": "Maria",
+    "email": "maria@gmail.com"
+}
