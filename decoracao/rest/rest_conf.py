@@ -18,6 +18,8 @@ def criar_aplicacao_fastapi():
     # Crio a aplicação FastAPI
     app = FastAPI()
 
+    # Configuro a aplicação FastAPI
+    configurar_api_rest(app)
     # ... e configuro suas rotas
     configurar_rotas(app)
 
