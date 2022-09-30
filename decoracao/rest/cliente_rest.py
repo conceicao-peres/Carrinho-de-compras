@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-# Minha rota API de decoracao
+# Minha rota API de cliente
 rota_cliente = APIRouter(
     # Prefixo para o caminho da rota
     prefix="/api/cliente"
@@ -11,4 +11,3 @@ rota_cliente = APIRouter(
 @rota_cliente.post("/")
 def criar_novo_cliente(cliente: dict):
     print("Salvar cliente", cliente)
-   
