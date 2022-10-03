@@ -11,3 +11,4 @@ rota_cliente = APIRouter(
 @rota_cliente.post("/")
 def criar_novo_cliente(cliente: dict):
     print("Salvar cliente", cliente)
+

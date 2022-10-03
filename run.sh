@@ -1,3 +1,4 @@
 #!/bin/bash
 
-exec uvicorn aplicacao:app --reload
+exec uvicorn --reload decoracao.aplicacao:app
+

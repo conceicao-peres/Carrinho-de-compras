@@ -7,4 +7,3 @@ rota_carrinho = APIRouter(
 )
 
 
-# Cria novo carrinho
