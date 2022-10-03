@@ -10,3 +10,4 @@ rota_principal = APIRouter(
 @rota_principal.get("/")
 def dizer_ola():
     return "Ok"
+

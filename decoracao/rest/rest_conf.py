@@ -13,7 +13,6 @@ def configurar_rotas(app: FastAPI):
     app.include_router(rota_carrinho)
 
 
-
 def criar_aplicacao_fastapi():
     # Crio a aplicação FastAPI
     app = FastAPI()
