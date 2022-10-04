@@ -1,4 +1,3 @@
 #!/bin/bash
 
-exec uvicorn --reload decoracao.aplicacao:app
-
+exec uvicorn aplicacao:main --factory

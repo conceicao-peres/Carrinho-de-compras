@@ -1,4 +1,5 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request, status
+
 from decoracao.rest.cliente_rest import rota_cliente
 from decoracao.rest.produto_rest import rota_produto
 from decoracao.rest.carrinho_rest import rota_carrinho
