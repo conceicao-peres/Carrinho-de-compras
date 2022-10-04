@@ -26,7 +26,7 @@ async def criar_novo_cliente(item: Item, response: Response):
     }
     try:
         if valida_email(req) is not None:
-            response.status_code = status.HTTP_400_BAD_REQUEST
+            response.status_code = status.HTTP_409_CONFLICT
         else:
             # noinspection PyStatementEffect
             connect_db().cliente.insert_one(req).inserted_id
