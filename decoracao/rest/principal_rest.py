@@ -6,11 +6,8 @@ rota_principal = APIRouter(
     prefix=""
 )
 
-
 @rota_principal.get("/")
-def dizer_ola():
-<<<<<<< HEAD
-    return "Ok"
-=======
-    return "Ok"
->>>>>>> 279780a (estrutura-projeto)
+async def dizer_ola():
+    return {"mensagem": "Ok"}
+
+
