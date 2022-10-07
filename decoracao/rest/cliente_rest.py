@@ -52,6 +52,12 @@ async def pesquisar_pelo_email(email: str):
     return result
 
 
+@rota_cliente.delete(
+    "/api/remove/cliente/{email}",
+    status_code=status.HTTP_204_NO_CONTENT
+)
 
-
+async def remove_cliente(email):
+    if valida_email({"email": email}) is not None:
+        connect_db().cliente.delete_one({"email": email})
 
