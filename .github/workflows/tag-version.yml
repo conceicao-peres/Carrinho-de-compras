@@ -1,0 +1,22 @@
+name: Tag Version
+
+on:
+  pull_request:
+    type:
+      - closed
+
+jobs:
+  deploy:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [ "3.10" ]
+    steps:
+      - name: Vesion
+        id: Version
+        uses: IIlyichev/github-tag-action@v6.3
+        with:
+          github_token: ${{ secrets.RELEASE_CI }}
+          release_branches: main,release
+          pre_release_branches: develop
