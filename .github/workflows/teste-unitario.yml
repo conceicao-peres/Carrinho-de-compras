@@ -5,7 +5,7 @@ on: [push]
 env:
   DB_HOST: ${{ secrets.DB_HOST }}
   DB_USER: ${{ secrets. DB_USER }}
-  PASSWD: ${{ secrets.PASSWD }}
+  PASSWD: ${{ secrets.DB_PASSWD }}
   DB_NAME: ${{ secrets.DB_NAME }}
 
 jobs:
@@ -31,7 +31,7 @@ jobs:
         run: |
           echo ${{ env.DB_HOST }} >> .env
           echo ${{ env.DB_USER }} >> .env
-          echo ${{ env.PASSWD }} >> .env
+          echo ${{ env.DB_PASSWD }} >> .env
           echo ${{ env.DB_NAME }} >> .env
       - name: Test with pytest
         run: |
