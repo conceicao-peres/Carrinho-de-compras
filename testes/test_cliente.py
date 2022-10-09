@@ -1,8 +1,6 @@
 import pytest
 import requests
 import json
-from fastapi.testclient import TestClient
-from decoracao.rest.cliente_rest import pesquisar_pelo_email
 
 @pytest.mark.asyncio
 async def test_pesquisar_pelo_email():
@@ -16,6 +14,13 @@ async def test_criar_novo_cliente():
     response = requests.post('http://localhost:8000/api/cliente', payload)
     status_code = response.status_code
     assert status_code == 201
+
+@pytest.mark.asyncio
+async def test_criar_novo_cliente_email_existente():
+    payload = json.dumps({'nome': 'juju', 'email': 'maria@hotmail.com'})
+    response = requests.post('http://localhost:8000/api/cliente', payload)
+    status_code = response.status_code
+    assert status_code == 409
 
 @pytest.mark.asyncio
 async def test_remove_cliente():
