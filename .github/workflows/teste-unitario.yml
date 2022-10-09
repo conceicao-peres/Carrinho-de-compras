@@ -33,6 +33,9 @@ jobs:
           echo ${{ env.DB_USER }} >> .env
           echo ${{ env.DB_PASSWD }} >> .env
           echo ${{ env.DB_NAME }} >> .env
+      - name: App run
+        run: |
+          bash ${GITHUB_WORKSPACE}/run.sh
       - name: Test with pytest
         run: |
           pytest
