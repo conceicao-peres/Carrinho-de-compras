@@ -15,6 +15,8 @@ GET {{url}}
 # URL base para a api de clientes
 @apiCliente={{url}}/api/cliente
 
+@apiCarrinho={{url}}/api/carrinho
+
 ###
 # Cadastra/salva um novo cliente
 POST {{apiCliente}}
@@ -22,4 +24,12 @@ POST {{apiCliente}}
 {
     "nome": "Maria",
     "email": "maria@gmail.com"
+}
+
+
+POST {{apiCarrinho}}
+
+{
+    "user": "Maria",
+   
 }
