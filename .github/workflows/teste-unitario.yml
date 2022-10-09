@@ -27,6 +27,12 @@ jobs:
           python -m pip install --upgrade pip
           pip install pytest
           if [ -f requerimentos.txt ]; then pip install -r requerimentos.txt; fi
+      - name: Dotenv create
+        run: |
+          echo ${{ env.DB_HOST }} >> .env
+          echo ${{ env.DB_USER }} >> .env
+          echo ${{ env.PASSWD }} >> .env
+          echo ${{ env.DB_NAME }} >> .env
       - name: Test with pytest
         run: |
           pytest
