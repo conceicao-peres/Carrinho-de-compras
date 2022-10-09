@@ -2,6 +2,10 @@ name: Tag Version
 
 on:
   pull_request:
+    branches:
+      - 'main'
+      - 'release'
+      - 'develop'
     type:
       - closed
 
