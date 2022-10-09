@@ -35,7 +35,7 @@ jobs:
           echo ${{ env.DB_NAME }} >> .env
       - name: App run
         run: |
-          bash ${GITHUB_WORKSPACE}/run.sh
+          bash ${GITHUB_WORKSPACE}/run.sh &
       - name: Test with pytest
         run: |
           pytest
