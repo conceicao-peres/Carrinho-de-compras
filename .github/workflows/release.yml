@@ -2,6 +2,9 @@ name: Push Container to Heroku
 
 on:
   pull_request:
+    branches:
+      - 'main'
+      - 'release'
     type:
       - closed
 
