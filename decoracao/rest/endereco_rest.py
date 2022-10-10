@@ -32,3 +32,15 @@ async def criar_endereco(endereco: Endereco, email_cliente: str, response: Respo
         cadastrar_endereco(req)
     return req
 
+##Pesquisar Endereços
+
+@rota_enderecos.get(
+    "/endereco/{email_cliente}",
+    response_model=Endereco,
+    status_code=status.HTTP_200_OK
+)
+async def pesquisar_pelo_email(email: str):
+    result = busca_por_email(email)
+    return result
+
+
