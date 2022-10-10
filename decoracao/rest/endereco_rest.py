@@ -44,3 +44,10 @@ async def pesquisar_pelo_email(email: str):
     return result
 
 
+@rota_enderecos.delete(
+    "/endereco/{email_cliente}",
+    status_code=status.HTTP_204_NO_CONTENT
+)
+async def remove_endereco(email):
+    if valida_email({"email": email}) is not None:
+        colecao_endereco.delete_one({"email": email})

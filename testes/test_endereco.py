@@ -23,3 +23,8 @@ async def test_pesquisar_pelo_email():
     status_code = response.status_code
     assert status_code == 200
 
+@pytest.mark.asyncio
+async def test_remove_endereco():
+    response = requests.delete('http://localhost:8000/api/remove/cliente/juju@hotmail.com')
+    status_code = response.status_code
+    assert status_code == 204
