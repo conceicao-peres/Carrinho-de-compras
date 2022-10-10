@@ -1,4 +1,3 @@
-import email
 from fastapi import APIRouter, status, Response
 
 from decoracao.modelos.modelos_endereco import Endereco
@@ -12,12 +11,13 @@ rota_enderecos = APIRouter(
 
 
 @rota_enderecos.post(
-    "/endereco/{email_cliente}", 
+    "/endereco/{email_cliente}",
     response_model=Endereco,
-    status_code=status.HTTP_200_OK
+    status_code=status.HTTP_201_CREATED
 )
 async def criar_endereco(endereco: Endereco, email_cliente: str, response: Response):
     req = {
+        'email': email_cliente,
         'rua': endereco.rua,
         'numero': endereco.numero,
         'cep': endereco.cep,
@@ -25,6 +25,5 @@ async def criar_endereco(endereco: Endereco, email_cliente: str, response: Respo
         'estado': endereco.estado
     }
 
-    response = cadastrar_endereco(req, email_cliente)
-
-    return response
+    cadastrar_endereco(req)
+    return req

@@ -23,3 +23,25 @@ POST {{apiCliente}}
     "nome": "Maria",
     "email": "maria@gmail.com"
 }
+
+
+
+
+# URL base para a api de endereco
+@apiEndereco={{url}}/endereco/maria%40hotmail.com
+
+###
+# Cadastra/salva um novo Endereço
+POST {{apiEndereco}}
+
+{
+    "email": "maria@hotmail.com",
+    "rua": "Rua Afonso",
+    "numero": 33,
+    "cep": "20000000",
+    "cidade": "Rio de Janeiro",
+    "estado": "RJ"
+}
+
+
+   
