@@ -1,7 +1,9 @@
 name: Test Suite
 
-on: [push]
-
+on:
+  pull_request:
+    branches:
+      - 'develop'
 env:
   DB_HOST: ${{ secrets.DB_HOST }}
   DB_USER: ${{ secrets. DB_USER }}
