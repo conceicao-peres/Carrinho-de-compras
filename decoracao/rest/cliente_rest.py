@@ -1,26 +1,17 @@
 from fastapi import APIRouter, status, Response
 
-from decoracao.persistencia.db import connect_db
-from decoracao.persistencia.obter_colecoes import colecao_cliente
-from decoracao.modelos.modelos_cliente import Item, ItemEmail
+from decoracao.modelos.modelos_cliente import Item
 from decoracao.regras.cliente_regras import cadastrar_novo_cliente
 from decoracao.persistencia.cliente_persistencia import (
-    valida_email, busca_por_email, cadastrar_cliente, remover_cliente)
+    valida_email, busca_por_email, remover_cliente)
 
-import urllib.parse
 import datetime
 
-# Minha rota API de cliente
-rota_cliente = APIRouter(
-    # Prefixo para o caminho da rota
-    prefix=""
-)
+rota_cliente = APIRouter(prefix="")
 
-# Cria novo cliente
 @rota_cliente.post(
     "/api/cliente",
     response_model=Item,
-    # Ajustado o código HTTP de retorno
     status_code=status.HTTP_201_CREATED
 )
 async def criar_novo_cliente(item: Item, response: Response):
@@ -29,7 +20,7 @@ async def criar_novo_cliente(item: Item, response: Response):
         'email': item.email,
         'criacao': datetime.datetime.utcnow()
     }
-    cadastrar_novo_cliente(req)
+    cadastrar_novo_cliente(req, response)
 
     return req
 
