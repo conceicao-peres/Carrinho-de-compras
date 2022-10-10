@@ -2,6 +2,7 @@ from fastapi import APIRouter, status, Response
 
 from decoracao.modelos.modelos_endereco import Endereco
 from decoracao.persistencia.endereco_persistencia import cadastrar_endereco
+from decoracao.persistencia.cliente_persistencia import valida_email
 
 # Minha rota API de enderecos
 rota_enderecos = APIRouter(
@@ -25,5 +26,9 @@ async def criar_endereco(endereco: Endereco, email_cliente: str, response: Respo
         'estado': endereco.estado
     }
 
-    cadastrar_endereco(req)
+    if valida_email(req) is not None:
+        response.status_code = status.HTTP_409_CONFLICT
+    else:
+        cadastrar_endereco(req)
     return req
+
