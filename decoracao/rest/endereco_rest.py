@@ -1,7 +1,7 @@
 from fastapi import APIRouter, status, Response
-
+from fastapi.responses import JSONResponse
 from decoracao.modelos.modelos_endereco import Endereco
-from decoracao.persistencia.endereco_persistencia import cadastrar_endereco
+from decoracao.persistencia.endereco_persistencia import cadastrar_endereco, busca_por_email, remover_endereco
 from decoracao.persistencia.cliente_persistencia import valida_email
 
 # Minha rota API de enderecos
@@ -27,27 +27,39 @@ async def criar_endereco(endereco: Endereco, email_cliente: str, response: Respo
     }
 
     if valida_email(req) is not None:
-        response.status_code = status.HTTP_409_CONFLICT
-    else:
         cadastrar_endereco(req)
+    else:
+        #response.status_code = status.HTTP_409_CONFLICT
+        return JSONResponse(status_code=status.HTTP_404_NOT_FOUND, content={'message': 'Email nao cadastrado.'})
     return req
 
 ##Pesquisar Endereços
 
 @rota_enderecos.get(
-    "/endereco/{email_cliente}",
+    #"/endereco/{email_cliente}",
+    "/endereco/{email}",
     response_model=Endereco,
     status_code=status.HTTP_200_OK
 )
 async def pesquisar_pelo_email(email: str):
-    result = busca_por_email(email)
-    return result
+
+    if valida_email({"email": email}) is not None:
+        result = busca_por_email(email)
+        return result
+    else:
+        return JSONResponse(status_code=status.HTTP_404_NOT_FOUND, content={'message': 'Email nao cadastrado.'})
+    return req
+
 
 
 @rota_enderecos.delete(
-    "/endereco/{email_cliente}",
+    #"/endereco/{email_cliente}",
+    "/endereco/{email}",
     status_code=status.HTTP_204_NO_CONTENT
 )
 async def remove_endereco(email):
     if valida_email({"email": email}) is not None:
-        colecao_endereco.delete_one({"email": email})
+        #colecao_endereco.delete_one({"email": email})
+        remover_endereco(email)
+    else:
+        return JSONResponse(status_code=status.HTTP_404_NOT_FOUND, content={'message': 'Email nao cadastrado.'})
