@@ -25,8 +25,6 @@ POST {{apiCliente}}
 }
 
 
-
-
 # URL base para a api de endereco
 @apiEndereco={{url}}/endereco/maria@gmail.com
 
@@ -43,5 +41,3 @@ POST {{apiEndereco}}
     "estado": "RJ"
 }
 
-
-   

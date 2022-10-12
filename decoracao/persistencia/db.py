@@ -15,6 +15,3 @@ def connect_db():
     db = client[db_name]
 
     return db
-
-
-
