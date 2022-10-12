@@ -28,3 +28,14 @@ def valida_nome_produto(nome_produto: str):
 
 def remover_produto(_id):
     colecao_produto.delete_one({"_id": ObjectId(_id)})
+
+
+def atualizar_produto(_id, nome_produto):
+    print('3')
+    result = colecao_produto.update_one(
+        {'_id': ObjectId(_id)},
+        {'$set': {'nome_produto': nome_produto}}
+        )
+    print('4')
+
+    return result

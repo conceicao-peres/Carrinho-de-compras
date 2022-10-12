@@ -1,7 +1,8 @@
+from unittest import result
 from bson import ObjectId
 from fastapi import APIRouter, status, Response
 from decoracao.modelos.modelos_produtos import Product
-from decoracao.persistencia.produto_persistencia import cadastrar_produto, busca_por_id,valida_nome_produto, remover_produto
+from decoracao.persistencia.produto_persistencia import cadastrar_produto, busca_por_id,valida_nome_produto, remover_produto, atualizar_produto
 
 # Minha rota API de produto
 rota_produto = APIRouter(
@@ -65,3 +66,19 @@ async def remove_produto_pelo_id(_id: str):
     result = busca_por_id(_id)
     if result is not None:
         remover_produto(_id)
+
+
+@rota_produto.post(
+    "/api/atualiza/produto/{_id}/{nome_produto}",
+    status_code=status.HTTP_200_OK
+)
+async def atualizar_produto_pelo_id(_id: str, nome_produto: str):
+    result = busca_por_id(_id)
+    print(result)
+    if result is not None:
+        print('2')
+        atualizar_produto(_id,nome_produto)
+    else:
+        print('ID não encontrado')
+
+    return result
