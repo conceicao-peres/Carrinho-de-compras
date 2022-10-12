@@ -1,5 +1,10 @@
 from decoracao.modelos.modelos_carrinho import OrderCarrinho
 from decoracao.persistencia.db import connect_db
+from decoracao.persistencia.cliente_persistencia import valida_email
+from decoracao.persistencia.carrinho_persistencia import lista_carrinho_por_usuario
+from fastapi import status
+from bson.json_util import dumps
+import json
 
 
 def add_to_cart(id_usuario, id_produto, db_usuario, db_produto, db_carrinho):
@@ -50,3 +55,18 @@ def delete_cart(id_usuario, db_carrinho):
         return False
     del db_carrinho[id_usuario]
     return True
+
+def pesquisa_carrinho_por_cliente(req, response):
+    # valida se cliente existe
+    _cliente = valida_email(req)
+    if _cliente is None:
+        response.status_code = status.HTTP_409_CONFLICT
+    else:
+        # lista produtos do carrinho
+        doc_itens_carrinho = lista_carrinho_por_usuario(_cliente['email'])
+        # converte cursor para json
+        list_cursor = list(doc_itens_carrinho)
+        list_data = dumps(list_cursor)
+        res = json.loads(list_data)
+
+        return res
