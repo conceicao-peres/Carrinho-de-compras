@@ -1,5 +1,5 @@
 from fastapi import APIRouter, status, Response
-
+from fastapi.responses import JSONResponse
 from decoracao.modelos.modelos_cliente import Item
 from decoracao.regras.cliente_regras import cadastrar_novo_cliente
 from decoracao.persistencia.cliente_persistencia import (
@@ -30,7 +30,10 @@ async def criar_novo_cliente(item: Item, response: Response):
     status_code=status.HTTP_200_OK
 )
 async def pesquisar_pelo_email(email: str):
+    if busca_por_email(email) is None:
+        return JSONResponse(status_code=status.HTTP_404_NOT_FOUND, content={'message': email+ ' not found.'})
     result = busca_por_email(email)
+
     return result
 
 @rota_cliente.delete(
@@ -38,5 +41,7 @@ async def pesquisar_pelo_email(email: str):
     status_code=status.HTTP_204_NO_CONTENT
 )
 async def remove_cliente(email):
-    if valida_email({"email": email}) is not None:
+    if busca_por_email(email) is None:
+        return JSONResponse(status_code=status.HTTP_404_NOT_FOUND, content={'message': email+ ' not found.'})
+    if busca_por_email(email) is not None:
         remover_cliente(email)
