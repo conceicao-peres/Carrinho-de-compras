@@ -1,11 +1,9 @@
 from decoracao.modelos.modelos_carrinho import OrderCarrinho
 from fastapi import APIRouter, status, Response
 from fastapi.responses import JSONResponse
-from decoracao.persistencia.db import connect_db
-from decoracao.modelos.modelos_cliente import Item
 from decoracao.regras import carrinho_regras
 from decoracao.persistencia.cliente_persistencia import valida_email
-import datetime
+from decoracao.persistencia.carrinho_persistencia import remover_carrinho
 
 # Minha rota API de carrinho
 rota_carrinho = APIRouter(
@@ -45,4 +43,16 @@ async def pesquisar_carrinho_pelo_email(email: str, response: Response):
             content={'message': 'Email nao cadastrado.'}
             )
 
+@rota_carrinho.delete(
+    "/api/carrinho/{email}/",
+    status_code=status.HTTP_204_NO_CONTENT
+)
+async def remove_carrinho(email):
+    if valida_email({"email": email}) is not None:
+        result = remover_carrinho(email)
+    else:
+        return JSONResponse(
+            status_code=status.HTTP_404_NOT_FOUND, 
+            content={'message': 'Carrinho nao encontrado.'}
+            )
 

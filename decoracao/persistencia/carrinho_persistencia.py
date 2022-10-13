@@ -6,3 +6,11 @@ def lista_carrinho_por_usuario(email: str):
     result = colecao_carrinho.find({"email": req})
 
     return result
+
+
+def remover_carrinho(email):
+    try:
+        result = colecao_carrinho.delete_one({"email": email})
+        return result
+    except Exception:
+        print (Exception)
