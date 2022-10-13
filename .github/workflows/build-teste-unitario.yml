@@ -3,7 +3,7 @@ name: Test Suite
 on:
   pull_request:
     branches:
-      - 'develop'
+      - 'main'
 env:
   DB_HOST: ${{ secrets.DB_HOST }}
   DB_USER: ${{ secrets. DB_USER }}
