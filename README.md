@@ -68,7 +68,8 @@ Atividade para elaboração de um carrinho de compras, cadastro de produtos de d
   ```bash
   pytest
   ```
+* Pipeline de Build e Testes
 
-![alt text](https://www.mtitecnologia.com.br/wp-content/uploads/2021/03/mtitecnologia-luiza-labs.jpg)
+![img.png](assets/img.png)
   
 
