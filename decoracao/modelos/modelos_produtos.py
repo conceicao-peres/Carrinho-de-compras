@@ -1,8 +1,6 @@
 from bson import ObjectId
 from pydantic import BaseModel, confloat, conint
 
-
-
 class Product(BaseModel):
     nome_produto: str
     descricao_produto: str

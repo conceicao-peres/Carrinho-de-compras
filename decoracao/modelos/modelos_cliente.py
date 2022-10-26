@@ -6,6 +6,3 @@ class Item(BaseModel):
         max_length=50
     )
     email: EmailStr
-
-class ItemEmail(BaseModel):
-    email: EmailStr
