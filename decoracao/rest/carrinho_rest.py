@@ -7,7 +7,8 @@ from decoracao.persistencia.cliente_persistencia import valida_email
 from decoracao.persistencia.carrinho_persistencia import cadastrar_carrinho, valida_email_carrinho, add_item_carrinho
 from decoracao.regras.produto_regras import valida_nome_produto
 
-rota_carrinho = APIRouter(prefix="/api")
+rota_carrinho = APIRouter(prefix="/api",
+                          tags=["Cart"])
 
 @rota_carrinho.post(
     "/criar/carrinho/{email}/{nome}",

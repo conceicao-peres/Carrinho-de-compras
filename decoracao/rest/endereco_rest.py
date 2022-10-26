@@ -5,7 +5,8 @@ from decoracao.persistencia.endereco_persistencia import cadastrar_endereco, bus
 from decoracao.persistencia.cliente_persistencia import valida_email
 
 rota_enderecos = APIRouter(
-    prefix=""
+    prefix="",
+    tags=["Address"]
 )
 
 @rota_enderecos.post(
@@ -22,7 +23,6 @@ async def criar_endereco(endereco: Endereco, email_cliente: str, response: Respo
         'cidade': endereco.cidade,
         'estado': endereco.estado
     }
-
     if valida_email(req) is not None:
         cadastrar_endereco(req)
     else:
@@ -35,7 +35,6 @@ async def criar_endereco(endereco: Endereco, email_cliente: str, response: Respo
     status_code=status.HTTP_200_OK
 )
 async def pesquisar_pelo_email(email: str):
-
     if valida_email({"email": email}) is not None:
         result = busca_por_email(email)
         return result
