@@ -1,19 +1,19 @@
 from decoracao.persistencia.obter_colecoes import colecao_cliente
 import urllib.parse
 
-def valida_email(req):
+def check_user(req):
     result = colecao_cliente.find_one({
         "email": req['email']
     })
     return result
 
-def cadastrar_cliente(req):
+def add_user(req):
     colecao_cliente.insert_one(req)
 
-def busca_por_email(email: str):
+def get_user_email(email: str):
     req = urllib.parse.unquote(email)
     result = colecao_cliente.find_one({"email": req})
     return result
 
-def remover_cliente(email):
+def remove_user_email(email):
     colecao_cliente.delete_one({"email": email})
