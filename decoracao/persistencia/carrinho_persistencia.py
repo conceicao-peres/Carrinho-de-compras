@@ -1,9 +1,9 @@
 from decoracao.persistencia.obter_colecoes import colecao_carrinho
 
-def cadastrar_carrinho(req):
+def add_cart(req):
     colecao_carrinho.insert_one(req)
 
-def valida_email_carrinho(req):
+def check_email_cart(req):
     result = colecao_carrinho.find_one({
         "email": req['email']
     })
