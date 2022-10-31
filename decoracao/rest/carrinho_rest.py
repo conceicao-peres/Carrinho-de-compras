@@ -5,7 +5,7 @@ from decoracao.modelos.modelos_produtos import Product
 from decoracao.regras.carrinho_regras import cria_lista_produtos
 from decoracao.persistencia.cliente_persistencia import check_user
 from decoracao.persistencia.carrinho_persistencia import cadastrar_carrinho, valida_email_carrinho, add_item_carrinho
-from decoracao.regras.produto_regras import valida_nome_produto
+from decoracao.persistencia.produto_persistencia import check_product_name
 
 rota_carrinho = APIRouter(prefix="/api",
                           tags=["Cart"])
