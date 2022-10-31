@@ -10,7 +10,7 @@ import datetime
 user = APIRouter(prefix="", tags=["User"])
 
 @user.post(
-    "/api/user",
+    "/user",
     description=""" Para cadastrar um novo usuario:
 - nome: dever ter ao menos 3 caracteres 
 - e-mail: deve ser unico (nao pode haver outro usuario com o mesmo email); deve ser valido (conter @)""",
@@ -27,7 +27,7 @@ async def new_user(item: Item, response: Response):
     return req
 
 @user.get(
-    "/api/user/{email}",
+    "/user/{email}",
     response_model=Item,
     status_code=status.HTTP_200_OK
 )
@@ -38,7 +38,7 @@ async def get_user(email: str):
     return result
 
 @user.delete(
-    "/api/user/{email}",
+    "/user/{email}",
     status_code=status.HTTP_204_NO_CONTENT
 )
 async def remove_user(email):
