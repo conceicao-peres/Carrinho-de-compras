@@ -11,3 +11,10 @@ def check_email_cart(req):
 
 def add_item_carrinho(req):
     colecao_carrinho.insert_many(req)
+
+def delete_cart(email):
+    try:
+        result = colecao_carrinho.delete_one({"email": email})
+        return result
+    except Exception:
+        print (Exception)
