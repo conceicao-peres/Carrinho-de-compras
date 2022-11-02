@@ -113,12 +113,12 @@ Os códigos de testes foram centralizados na pasta testes e, dentro desse diret�
   ```
   
   <br>
-### 6 - Pipeline de Build e Testes
+## Pipeline de Build e Testes
 Ao ser criado uma solicitação de PR a partir da branch/features para a branch Develop, será excecutado de forma automatica os testes unitários de nosso projeto implemtados no módulo `testes`
 
 ![img.png](assets/img.png)
 <br><br>
-### 7 - Documentação OpenAPI
+## Documentação OpenAPI
 Nativamente o FastAPI já trabalha e gera o documento Swagger, usado para descrever e apresentar as APIs para que possamos testá-las ou utilizá-las em aplicações clientes.
 <br><br>
 <span style="display:block;text-align:center">
