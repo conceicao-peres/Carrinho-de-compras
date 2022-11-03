@@ -69,37 +69,40 @@ Dentro desses diretórios temos os arquivos:
 - [carrinho_rest.py](https://github.com/conceicao-peres/Carrinho-de-compras/blob/main/decoracao/rest/carrinho_rest.py): Rotas para as APIs  (caminho URL "/cart/").
 - [rest_conf.py](https://github.com/conceicao-peres/Carrinho-de-compras/blob/main/decoracao/rest/rest_conf.py): Configurações com o FastAPI.
 ```
-decoracao
-├── modelos
-│   ├── __init__.py
-│   ├── modelos_carrinho.py
-│   ├── modelos_cliente.py
-│   ├── modelos_endereco.py
-│   ├── modelos_produtos.py
-│   └── __pycache__
-├── persistencia
-│   ├── carrinho_persistencia.py
-│   ├── cliente_persistencia.py
-│   ├── db.py
-│   ├── endereco_persistencia.py
-│   ├── __init__.py
-│   ├── obter_colecoes.py
-│   ├── produto_persistencia.py
-│   └── __pycache__
-├── regras
-│   ├── carrinho_regras.py
-│   ├── cliente_regras.py
-│   ├── __init__.py
-│   └── __pycache__
-├── rest
-│   ├── carrinho_rest.py
-│   ├── cliente_rest.py
-│   ├── endereco_rest.py
-│   ├── __init__.py
-│   ├── produto_rest.py
-│   ├── __pycache__
-│   └── rest_conf.py
-└── run.sh
+├── aplicacao.py
+├── decoracao
+│   ├── modelos
+│   │   ├── __init__.py
+│   │   ├── modelos_carrinho.py
+│   │   ├── modelos_cliente.py
+│   │   ├── modelos_endereco.py
+│   │   └── modelos_produtos.py
+│   ├── persistencia
+│   │   ├── carrinho_persistencia.py
+│   │   ├── cliente_persistencia.py
+│   │   ├── db.py
+│   │   ├── endereco_persistencia.py
+│   │   ├── __init__.py
+│   │   ├── obter_colecoes.py
+│   │   └── produto_persistencia.py
+│   ├── regras
+│   │   ├── carrinho_regras.py
+│   │   ├── cliente_regras.py
+│   │   └── __init__.py
+│   └── rest
+│       ├── carrinho_rest.py
+│       ├── cliente_rest.py
+│       ├── endereco_rest.py
+│       ├── __init__.py
+│       ├── produto_rest.py
+│       └── rest_conf.py
+├── requerimentos.txt
+├── run.sh
+└── testes
+    ├── __init__.py
+    ├── test_cliente.py
+    └── test_endereco.py
+
 ```
 
 ### 3 - Conectando no banco de dados
