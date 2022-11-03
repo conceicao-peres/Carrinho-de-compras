@@ -5,14 +5,14 @@ import json
 @pytest.mark.asyncio
 async def test_criar_endereco():
     payload = json.dumps({ 
-        "email": "maria@hotmail.com",
+        "email": "mario@hotmail.com",
         "rua": "Rua Afonso", 
         "numero": 33, 
         "cep": "20000000", 
         "cidade": "Rio de Janeiro", 
         "estado": "RJ"
         })
-    response = requests.post('http://localhost:8000/endereco/maria@hotmail.com', payload)
+    response = requests.post('http://localhost:8000/endereco/mario@hotmail.com', payload)
     status_code = response.status_code
     assert status_code == 201
 
@@ -32,7 +32,7 @@ async def test_criar_endereco_email_nao_existe():
 
 @pytest.mark.asyncio
 async def test_pesquisar_endereco():
-    response = requests.get('http://localhost:8000/endereco/maria@hotmail.com')
+    response = requests.get('http://localhost:8000/endereco/mario@hotmail.com')
     status_code = response.status_code
     assert status_code == 200
 
@@ -44,7 +44,7 @@ async def test_remove_endereco():
 
 @pytest.mark.asyncio
 async def test_remove_endereco():
-    response = requests.delete('http://localhost:8000/endereco/maria@hotmail.com')
+    response = requests.delete('http://localhost:8000/endereco/mario@hotmail.com')
     status_code = response.status_code
     assert status_code == 204
 
