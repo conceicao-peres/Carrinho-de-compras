@@ -74,7 +74,11 @@ Dentro desses diretórios temos os arquivos:
 │   ├── modelos
 │   │   ├── __init__.py
 │   │   ├── modelos_carrinho.py
-│   │   ├── modelos_cliente.py
+│   │   ├── modelos_cliente.py<span style="display:block;text-align:center">
+156
+![Screenshot from 2022-11-01 16-33-06](https://user-images.githubusercontent.com/73192544/199322644-80cba5f0-6596-4378-a85f-6c573600084f.png)
+157
+</span>
 │   │   ├── modelos_endereco.py
 │   │   └── modelos_produtos.py
 │   ├── persistencia
@@ -152,11 +156,8 @@ Ao ser criada uma solicitação de PR da `branch/feature` para a `branch Develop
 ## Documentação OpenAPI
 Nativamente o FastAPI já trabalha e gera o documento Swagger, usado para descrever e apresentar as APIs para que possamos testá-las ou utilizá-las em aplicações clientes.
 <br><br>
-<span style="display:block;text-align:center">
-![Screenshot from 2022-11-01 16-33-06](https://user-images.githubusercontent.com/73192544/199322644-80cba5f0-6596-4378-a85f-6c573600084f.png)
-</span>
 * Como testar:<br>
-Suba a aplicação FastAPI<br>
+Suba a aplicação<br>
 Acesse a documentação Swagger:
   ```bash
   http://localhost:8000/docs
