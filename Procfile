@@ -1,2 +1,2 @@
 Procfile
-    web: uvicorn --reload decoracao.aplicacao:app --host 0.0.0.0 --port $PORT
+    web: uvicorn aplicacao:main --factory --host 0.0.0.0 --port $PORT
