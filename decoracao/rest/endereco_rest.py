@@ -1,54 +1,53 @@
 from fastapi import APIRouter, status, Response
 from fastapi.responses import JSONResponse
 from decoracao.modelos.modelos_endereco import Endereco
-from decoracao.persistencia.endereco_persistencia import cadastrar_endereco, busca_por_email, remover_endereco
-from decoracao.persistencia.cliente_persistencia import valida_email
+from decoracao.persistencia.endereco_persistencia import create_new_address, get_address_email, delete_address
+from decoracao.persistencia.cliente_persistencia import check_user
 
-rota_enderecos = APIRouter(
-    prefix=""
+address = APIRouter(
+    prefix="",
+    tags=["Address"]
 )
 
-@rota_enderecos.post(
-    "/endereco/{email_cliente}",
+@address.post(
+    "/address/{email}",
     response_model=Endereco,
     status_code=status.HTTP_201_CREATED
 )
-async def criar_endereco(endereco: Endereco, email_cliente: str, response: Response):
+async def new_address(endereco: Endereco, email: str, response: Response):
     req = {
-        'email': email_cliente,
+        'email': email,
         'rua': endereco.rua,
         'numero': endereco.numero,
         'cep': endereco.cep,
         'cidade': endereco.cidade,
         'estado': endereco.estado
     }
-
-    if valida_email(req) is not None:
-        cadastrar_endereco(req)
+    if check_user(req) is not None:
+        create_new_address(req)
     else:
         return JSONResponse(status_code=status.HTTP_404_NOT_FOUND, content={'message': 'Email nao cadastrado.'})
     return req
 
-@rota_enderecos.get(
-    "/endereco/{email}",
+@address.get(
+    "/address/{email}",
     response_model=Endereco,
     status_code=status.HTTP_200_OK
 )
-async def pesquisar_pelo_email(email: str):
-
-    if valida_email({"email": email}) is not None:
-        result = busca_por_email(email)
+async def get_address(email: str):
+    if check_user({"email": email}) is not None:
+        result = get_address_email(email)
         return result
     else:
         return JSONResponse(status_code=status.HTTP_404_NOT_FOUND, content={'message': 'Email nao cadastrado.'})
     return req
 
-@rota_enderecos.delete(
-    "/endereco/{email}",
+@address.delete(
+    "/address/{email}",
     status_code=status.HTTP_204_NO_CONTENT
 )
-async def remove_endereco(email):
-    if valida_email({"email": email}) is not None:
-        remover_endereco(email)
+async def remove_address(email):
+    if check_user({"email": email}) is not None:
+        delete_address(email)
     else:
         return JSONResponse(status_code=status.HTTP_404_NOT_FOUND, content={'message': 'Email nao cadastrado.'})

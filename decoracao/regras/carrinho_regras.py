@@ -1,9 +1,7 @@
-from decoracao.persistencia.produto_persistencia import valida_nome_produto
+from decoracao.persistencia.produto_persistencia import check_product_name
 
-
-
-def cria_lista_produtos(item):
+def product_list(item):
     lista_produto = []
-    produto = valida_nome_produto(item)
+    produto = check_product_name(item)
     lista_produto.append(produto)
     return lista_produto

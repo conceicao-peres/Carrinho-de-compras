@@ -74,11 +74,6 @@ Dentro desses diretórios temos os arquivos:
 │   ├── modelos
 │   │   ├── __init__.py
 │   │   ├── modelos_carrinho.py
-│   │   ├── modelos_cliente.py<span style="display:block;text-align:center">
-156
-![Screenshot from 2022-11-01 16-33-06](https://user-images.githubusercontent.com/73192544/199322644-80cba5f0-6596-4378-a85f-6c573600084f.png)
-157
-</span>
 │   │   ├── modelos_endereco.py
 │   │   └── modelos_produtos.py
 │   ├── persistencia
