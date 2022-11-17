@@ -23,7 +23,7 @@ async def test_pesquisar_por_email_inexistente():
 
 @pytest.mark.asyncio
 async def test_criar_novo_cliente_email_existente():
-    payload = json.dumps({'nome': 'maria', 'email': 'maria@hotmail.com'})
+    payload = json.dumps({'nome': 'juju', 'email': 'maria@hotmail.com'})
     response = requests.post('http://localhost:8000/user', payload)
     status_code = response.status_code
     assert status_code == 409
