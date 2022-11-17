@@ -36,7 +36,7 @@ Os épicos estão divididos por funcionalidade. E para o processo de desenvolvim
   <br>
 * Instalar requerimentos
      ```bash
-     pip install -r requirements.txt
+     pip install -r requerimentos.txt
      ```
    <br>
 * Subir a aplicação
