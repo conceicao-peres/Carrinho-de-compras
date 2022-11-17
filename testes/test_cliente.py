@@ -11,7 +11,9 @@ async def test_criar_novo_cliente():
 
 @pytest.mark.asyncio
 async def test_pesquisar_pelo_email():
+
     response = requests.get('http://localhost:8000/user/maria@hotmail.com')
+
     status_code = response.status_code
     assert status_code == 200
 
