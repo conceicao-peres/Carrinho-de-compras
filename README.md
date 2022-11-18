@@ -152,8 +152,7 @@ Ao ser criada uma solicitação de PR da `branch/feature` para a `branch Develop
 Nativamente o FastAPI já trabalha e gera o documento Swagger, usado para descrever e apresentar as APIs para que possamos testá-las ou utilizá-las em aplicações clientes.
 <br><br>
 * Como testar:<br>
-Suba a aplicação<br>
 Acesse a documentação Swagger:
   ```bash
-  http://localhost:8000/docs
+  https://shopcart.herokuapp.com/docs#/
   ```
